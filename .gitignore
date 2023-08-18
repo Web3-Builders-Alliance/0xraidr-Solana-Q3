@@ -1,0 +1,5 @@
+wba-wallet.json
+node_modules
+node_modules/*
+*/node_modules/*
+cluster1/wba_vault/test-ledger/*.log
