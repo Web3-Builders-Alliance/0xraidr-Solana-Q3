@@ -1,4 +1,3 @@
-//D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o
 import {
   Connection,
   Keypair,
@@ -59,7 +58,7 @@ const vault = PublicKey.findProgramAddressSync(
 (async () => {
   try {
     const txhash = await program.methods
-      .deposit(new BN(0.1 * LAMPORTS_PER_SOL))
+      .withdraw(new BN(0.1 * LAMPORTS_PER_SOL))
       .accounts({
         owner: keypair.publicKey,
         vaultState: vaultState,
@@ -70,7 +69,7 @@ const vault = PublicKey.findProgramAddressSync(
       .signers([keypair])
       .rpc();
     console.log(`Success! Check out your TX here: 
-      https://explorer.solana.com/tx/${txhash}?cluster=devnet`);
+        https://explorer.solana.com/tx/${txhash}?cluster=devnet`);
   } catch (e) {
     console.error(`Oops, something went wrong: ${e}`);
   }
