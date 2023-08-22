@@ -1,4 +1,3 @@
-//D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o
 import {
   Connection,
   Keypair,
@@ -22,9 +21,6 @@ const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 // Create a devnet connection
 const connection = new Connection("https://api.devnet.solana.com");
 
-// Github account
-const github = Buffer.from("https://github.com/0xraidr", "utf8");
-
 // Create our anchor provider
 const provider = new AnchorProvider(connection, new Wallet(keypair), {
   commitment: "confirmed",
@@ -36,7 +32,7 @@ const program = new Program<WbaVault>(
   "D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o" as Address,
   provider
 );
-// done in class
+
 const vaultState = new PublicKey(
   "BhyMQ4ivmLbSr95Uvhezjj9jF5Nt9NKcMxfNLH8chvsh"
 );
@@ -53,9 +49,7 @@ const vault = PublicKey.findProgramAddressSync(
   vault_seeds,
   program.programId
 )[0];
-//
 
-// Execute our enrollment transaction
 (async () => {
   try {
     const txhash = await program.methods

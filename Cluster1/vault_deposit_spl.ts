@@ -1,11 +1,5 @@
 //D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o
-import {
-  Connection,
-  Keypair,
-  SystemProgram,
-  PublicKey,
-  LAMPORTS_PER_SOL,
-} from "@solana/web3.js";
+import { Connection, Keypair, SystemProgram, PublicKey } from "@solana/web3.js";
 import {
   Program,
   Wallet,
@@ -27,9 +21,6 @@ const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 // Create a devnet connection
 const connection = new Connection("https://api.devnet.solana.com");
 
-// Github account
-const github = Buffer.from("https://github.com/0xraidr", "utf8");
-
 // Create our anchor provider
 const provider = new AnchorProvider(connection, new Wallet(keypair), {
   commitment: "confirmed",
@@ -41,7 +32,6 @@ const program = new Program<WbaVault>(
   "D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o" as Address,
   provider
 );
-// done in class
 const vaultState = new PublicKey(
   "BhyMQ4ivmLbSr95Uvhezjj9jF5Nt9NKcMxfNLH8chvsh"
 );
@@ -52,18 +42,8 @@ const vaultAuth = PublicKey.findProgramAddressSync(
   program.programId
 )[0];
 
-const vault_seeds = [Buffer.from("vault"), vaultAuth.toBuffer()];
-
 const mint = new PublicKey("Hhp8MxBZx3TSoC9DiYTyhJvnECjvs6VkZmsZ1zVoHrt9");
 
-// const vault = PublicKey.findProgramAddressSync(
-//   vault_seeds,
-//   program.programId
-// )[0];
-
-//
-
-// Execute our enrollment transaction
 (async () => {
   const ownerAta = await getOrCreateAssociatedTokenAccount(
     connection,

@@ -1,4 +1,3 @@
-//D51uEDHLbWAxNfodfQDv7qkp8WZtxrhi3uganGbNos7o
 import { Connection, Keypair, SystemProgram, PublicKey } from "@solana/web3.js";
 import {
   Program,
@@ -14,9 +13,6 @@ const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 
 // Create a devnet connection
 const connection = new Connection("https://api.devnet.solana.com");
-
-// Github account
-const github = Buffer.from("https://github.com/0xraidr", "utf8");
 
 // Create our anchor provider
 const provider = new AnchorProvider(connection, new Wallet(keypair), {
@@ -44,9 +40,7 @@ const vault = PublicKey.findProgramAddressSync(
   vault_seeds,
   program.programId
 )[0];
-//
 
-// Execute our enrollment transaction
 (async () => {
   try {
     const txhash = await program.methods
